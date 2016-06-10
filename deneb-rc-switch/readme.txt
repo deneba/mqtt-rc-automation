@@ -1,12 +1,15 @@
-- First build the wiringPi
+First build the wiringPi
+=======================
 cd wiringPi
 ./build (It also installs it. Afterwards you need to use -lwiringPi in the compile line to link to it.)
 
-- Building PiSwitchLib.so
+Building PiSwitchLib.so
+=======================
 make
 g++ -shared -lwiringPi -Wl,-soname,PiSwitchLib.so -o  PiSwitchLib.so  PiSwitch.o
 
-- Using PiSwitchLib.so
+Using PiSwitchLib.so in Python
+==============================
 
 from ctypes import cdll
 lib = cdll.LoadLibrary('./PiSwitchLib.so')
